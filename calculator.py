@@ -41,9 +41,14 @@ def calculate():
     elif operation == "x":
         print(num1, "x", num2, "=", multiply(num1, num2))
     elif operation == "/":
-        print(num1, "/", num2, "=", divide(num1, num2))
+        if num2 == 0:
+            print("Error: division by zero")
+            return
+        result = num1 / num2
     else:
         print("Invalid input")
+        return
+    print("Result:", result)
     
 
 
@@ -162,7 +167,7 @@ button_equal.grid(row=5, column=1, columnspan=2)
 button_clear.grid(row=4, column=1, columnspan=2)
 
 button_subtract.grid(row=6, column=0)
-button_multiply.grid(row=3, column=1)
+button_multiply.grid(row=6, column=1)
 button_divide.grid(row=6, column=2)
 
 
