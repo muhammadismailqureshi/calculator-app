@@ -50,12 +50,38 @@ def calculate():
         return
     print("Result:", result)
     
+#Memory Functions
+memory = 0
+memory_in_use = False
+
+def memory_clear():
+    global memory
+    global memory_in_use
+    memory = 0
+    memory_in_use = False
+
+
+def memory_add():
+    global memory
+    global memory_in_use
+    current_value = e.get()
+    if current_value == "":
+        return
+    if not memory_in_use:
+        memory = float(current_value)
+        memory_in_use= True
+    else:
+        memory += float(current_value)
+
+    e.delete(0, END)
+
+
 
 
 
 root = Tk()
 
-root.title("Calculator")
+root.title("Simple Calculator by TechVendi")
 
 e = Entry(root, width=35, borderwidth=5)
 
@@ -125,6 +151,8 @@ def button_divide():
 
 
 
+
+
 # Defining buttons
 
 
@@ -144,6 +172,8 @@ button_multiply = Button(root, text="x", padx=40, pady=20, command=button_multip
 button_divide= Button(root, text="/", padx=41, pady=20, command=button_divide)
 button_clear = Button(root, text="Clear", padx=79, pady=20, command=button_clear)
 button_equal = Button(root, text="=", padx=91, pady=20, command=button_equal)
+button_mc = Button(root, text="MC", padx=35, pady=20, command=memory_clear)
+button_mplus = Button(root, text="M+", padx=35, pady=20, command=memory_add)
 
 
 #Display buttons on the screen
@@ -169,6 +199,9 @@ button_clear.grid(row=4, column=1, columnspan=2)
 button_subtract.grid(row=6, column=0)
 button_multiply.grid(row=6, column=1)
 button_divide.grid(row=6, column=2)
+
+button_mc.grid(row=7, column=0)
+button_mplus.grid(row=7, column=1)
 
 
 root.mainloop()
